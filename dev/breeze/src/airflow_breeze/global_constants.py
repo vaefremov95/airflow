@@ -51,8 +51,7 @@ APACHE_AIRFLOW_GITHUB_REPOSITORY = "apache/airflow"
 # Checked before putting in build cache
 ALLOWED_PYTHON_MAJOR_MINOR_VERSIONS = ["3.10", "3.11", "3.12", "3.13"]
 DEFAULT_PYTHON_MAJOR_MINOR_VERSION = ALLOWED_PYTHON_MAJOR_MINOR_VERSIONS[0]
-# We set 3.12 as default image version until FAB supports Python 3.13
-DEFAULT_PYTHON_MAJOR_MINOR_VERSION_FOR_IMAGES = "3.12"
+DEFAULT_PYTHON_MAJOR_MINOR_VERSION_FOR_IMAGES = ALLOWED_PYTHON_MAJOR_MINOR_VERSIONS[0]
 
 
 # Maps each supported Python version to the minimum Airflow version that supports it.
@@ -181,6 +180,26 @@ CONSTRAINTS_NO_PROVIDERS = "constraints-no-providers"
 ALLOWED_KIND_OPERATIONS = ["start", "stop", "restart", "status", "deploy", "test", "shell", "k9s"]
 ALLOWED_CONSTRAINTS_MODES_CI = [CONSTRAINTS_SOURCE_PROVIDERS, CONSTRAINTS, CONSTRAINTS_NO_PROVIDERS]
 ALLOWED_CONSTRAINTS_MODES_PROD = [CONSTRAINTS, CONSTRAINTS_NO_PROVIDERS, CONSTRAINTS_SOURCE_PROVIDERS]
+
+ALLOWED_LLM_MODELS = [
+    # Claude models (via claude CLI)
+    "claude/claude-opus-4-6",
+    "claude/claude-sonnet-4-6",
+    "claude/claude-opus-4-20250514",
+    "claude/claude-sonnet-4-20250514",
+    "claude/claude-haiku-4-5-20251001",
+    "claude/sonnet",
+    "claude/opus",
+    "claude/haiku",
+    # OpenAI Codex models (via codex CLI)
+    "codex/gpt-5.3-codex",
+    "codex/gpt-5.3-codex-spark",
+    "codex/gpt-5.2-codex",
+    "codex/gpt-5.1-codex",
+    "codex/gpt-5-codex",
+    "codex/gpt-5-codex-mini",
+    "codex/gpt-5",
+]
 
 ALLOWED_CELERY_BROKERS = ["rabbitmq", "redis"]
 DEFAULT_CELERY_BROKER = ALLOWED_CELERY_BROKERS[1]
